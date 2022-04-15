@@ -8,7 +8,7 @@ resource "aws_securityhub_account" "main" {
 }
 
 resource "aws_securityhub_finding_aggregator" "main" {
-  count = var.aggregate_findings ? 1 : 0
+  count = var.aggregate_findings && var.master_account_id == "" ? 1 : 0
 
   linking_mode = "ALL_REGIONS"
 
@@ -26,6 +26,14 @@ resource "aws_securityhub_member" "members" {
   account_id = var.member_accounts[count.index].account_id
   email      = var.member_accounts[count.index].email
   invite     = true
+}
+
+resource "aws_securityhub_invite_accepter" "invitee" {
+  count = var.master_account_id != "" ? 1 : 0
+
+  master_id = var.master_account_id
+
+  depends_on = [aws_securityhub_account.main]
 }
 
 # --------------------------------------------------------------------------------------------------
