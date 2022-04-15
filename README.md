@@ -1,6 +1,7 @@
 # terraform-aws-secure-baseline
 
-[![Github Actions](https://github.com/nozaq/terraform-aws-secure-baseline/workflows/Terraform/badge.svg)](https://github.com/nozaq/terraform-aws-secure-baseline/actions?workflow=Terraform)
+[![Github Actions](https://github.com/nozaq/terraform-aws-secure-baseline/actions/workflows/main.yml/badge.svg)](https://github.com/nozaq/terraform-aws-secure-baseline/actions/workflows/main.yml)
+[![Releases](https://img.shields.io/github/v/release/nozaq/terraform-aws-secure-baseline)](https://github.com/nozaq/terraform-aws-secure-baseline/releases/latest)
 
 [Terraform Module Registry](https://registry.terraform.io/modules/nozaq/secure-baseline/aws)
 
@@ -105,19 +106,25 @@ This module is composed of several submodules and each of which can be used inde
 - [securityhub-baseline](./modules/securityhub-baseline)
 - [vpc-baseline](./modules/vpc-baseline)
 
+## Compatibility
+
+- Starting from v1.0, this module requires [Terraform Provider for AWS](https://github.com/terraform-providers/terraform-provider-aws) v4.0 or later. [Version 1.0 Upgrade Guide](./docs/upgrade-1.0.md) described the recommended procedure after the upgrade.
+- Starting from v0.20, this module requires [Terraform Provider for AWS](https://github.com/terraform-providers/terraform-provider-aws) v3.0 or later. Please use v0.19 if you need to use v2.x or earlier.
+- Starting from v0.10, this module requires Terraform v0.12 or later. Please use v0.9 if you need to use Terraform v0.11 or ealier.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.66.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.4 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.66.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.2.0 |
 
 ## Inputs
 
@@ -206,6 +213,7 @@ This module is composed of several submodules and each of which can be used inde
 | <a name="input_support_iam_role_name"></a> [support\_iam\_role\_name](#input\_support\_iam\_role\_name) | The name of the the support role. | `string` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Specifies object tags key and value. This applies to all resources created by this module. | `map(string)` | no |
 | <a name="input_target_regions"></a> [target\_regions](#input\_target\_regions) | A list of regions to set up with this module. | `list(string)` | no |
+| <a name="input_turn_off_organization_trail"></a> [turn\_off\_organization\_trail](#input\_turn\_off\_organization\_trail) | Specifies whether the disable the organization trail. Organization trails log events for the master account and all member accounts. Can only be created in the organization master account. | `bool` | no |
 | <a name="input_unauthorized_api_calls_enabled"></a> [unauthorized\_api\_calls\_enabled](#input\_unauthorized\_api\_calls\_enabled) | The boolean flag whether the unauthorized\_api\_calls alarm is enabled or not. No resources are created when set to false. | `bool` | no |
 | <a name="input_use_external_audit_log_bucket"></a> [use\_external\_audit\_log\_bucket](#input\_use\_external\_audit\_log\_bucket) | A boolean that indicates whether the specific audit log bucket already exists. Create a new S3 bucket if it is set to false. | `bool` | no |
 | <a name="input_vpc_changes_enabled"></a> [vpc\_changes\_enabled](#input\_vpc\_changes\_enabled) | The boolean flag whether the vpc\_changes alarm is enabled or not. No resources are created when set to false. | `bool` | no |
@@ -242,11 +250,6 @@ This module is composed of several submodules and each of which can be used inde
 | <a name="output_vpc_flow_logs_group"></a> [vpc\_flow\_logs\_group](#output\_vpc\_flow\_logs\_group) | The CloudWatch Logs log group which stores VPC Flow Logs in each region. |
 | <a name="output_vpc_flow_logs_iam_role"></a> [vpc\_flow\_logs\_iam\_role](#output\_vpc\_flow\_logs\_iam\_role) | The IAM role used for delivering VPC Flow Logs to CloudWatch Logs. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-## Compatibility
-
-- Starting from v0.20, this module requires [Terraform Provider for AWS](https://github.com/terraform-providers/terraform-provider-aws) v3.0 or later. Please use v0.19 if you need to use v2.x or earlier.
-- Starting from v0.10, this module requires Terraform v0.12 or later. Please use v0.9 if you need to use Terraform v0.11 or ealier.
 
 [cis amazon web services foundations v1.4.0]: https://www.cisecurity.org/benchmark/amazon_web_services/
 [aws foundational security best practices v1.0.0]: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp.html

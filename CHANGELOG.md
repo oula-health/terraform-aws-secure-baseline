@@ -1,5 +1,46 @@
-<a name="unreleased"></a>
-## [Unreleased]
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.1](https://github.com/nozaq/terraform-aws-secure-baseline/compare/v1.0.0...v1.0.1) (2022-03-06)
+### Bug Fixes
+- avoid for_each key error ([#273](https://github.com/nozaq/terraform-aws-secure-baseline/issues/273)) ([0122d6f](https://github.com/nozaq/terraform-aws-secure-baseline/commit/0122d6fcd00ecd1114a2d5e7853027ebb0322d71))
+- mark `var.member_accounts` required ([#272](https://github.com/nozaq/terraform-aws-secure-baseline/issues/272)) ([8612941](https://github.com/nozaq/terraform-aws-secure-baseline/commit/8612941317db8c5f3eb82fd8c5218b8ef5a5d41f))
+
+## [1.0.0] - 2022-02-19
+### Feat
+- add new S3 bucket configuration resources ([#261](https://github.com/nozaq/terraform-aws-secure-baseline/issues/261))
+- allow use of organization trail to be toggled via variable ([#259](https://github.com/nozaq/terraform-aws-secure-baseline/issues/259))
+
+### Fix
+- require AWS provider v4.2.0 ([#270](https://github.com/nozaq/terraform-aws-secure-baseline/issues/270))
+- require AWS provider v4.1.0 ([#268](https://github.com/nozaq/terraform-aws-secure-baseline/issues/268))
+- the condition to use the organization trail ([#265](https://github.com/nozaq/terraform-aws-secure-baseline/issues/265))
+- use count instead of `var.enabled` ([#262](https://github.com/nozaq/terraform-aws-secure-baseline/issues/262))
+
+### Refactor
+- remove `destination_options` ([#267](https://github.com/nozaq/terraform-aws-secure-baseline/issues/267))
+- explicitly define a format for FlowLogs ([#264](https://github.com/nozaq/terraform-aws-secure-baseline/issues/264))
+- replace deprecated arguments ([#263](https://github.com/nozaq/terraform-aws-secure-baseline/issues/263))
+
+### BREAKING CHANGE
+
+resources regarding S3 bucket configurations need manual import
+after upgrade. See `docs/upgrade-1.0.md` for guidance.
+
+
+<a name="0.34.0"></a>
+## [0.34.0] - 2022-01-22
+### Feat
+- automatically accepts invite from the master ([#256](https://github.com/nozaq/terraform-aws-secure-baseline/issues/256))
+- enforce strong password policy by default ([#252](https://github.com/nozaq/terraform-aws-secure-baseline/issues/252))
+
+### Fix
+- no findings aggregator for member accounts ([#257](https://github.com/nozaq/terraform-aws-secure-baseline/issues/257))
+- set the minimum terraform version to 1.1.4 ([#255](https://github.com/nozaq/terraform-aws-secure-baseline/issues/255))
+- upgrade minimum provider requirements ([#248](https://github.com/nozaq/terraform-aws-secure-baseline/issues/248))
 
 
 <a name="0.33.0"></a>
@@ -381,7 +422,8 @@
 <a name="0.0.1"></a>
 ## 0.0.1 - 2018-02-12
 
-[Unreleased]: https://github.com/nozaq/terraform-aws-secure-baseline/compare/0.33.0...HEAD
+[1.0.0]: https://github.com/nozaq/terraform-aws-secure-baseline/compare/0.34.0...1.0.0
+[0.34.0]: https://github.com/nozaq/terraform-aws-secure-baseline/compare/0.33.0...0.34.0
 [0.33.0]: https://github.com/nozaq/terraform-aws-secure-baseline/compare/0.32.0...0.33.0
 [0.32.0]: https://github.com/nozaq/terraform-aws-secure-baseline/compare/0.31.0...0.32.0
 [0.31.0]: https://github.com/nozaq/terraform-aws-secure-baseline/compare/0.30.0...0.31.0
